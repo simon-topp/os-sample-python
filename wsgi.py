@@ -2,11 +2,11 @@ from flask import Flask
 application = Flask(__name__)
 
 @application.route("/")
-def hello():
+def helloJoe():
     return "Hello Joe!"
 
 @application.route("/bob")
-def hello():
+def helloBob():
     return "Hello Bob!!!"
 
 if __name__ == "__main__":
