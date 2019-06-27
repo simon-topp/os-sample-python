@@ -10,7 +10,7 @@ def helloBob():
     return "Hello Bob!!!"
 
 @application.route("/bob2")
-def helloBob():
+def helloBob22():
     return "Hello Bob2!!!"
 
 if __name__ == "__main__":
