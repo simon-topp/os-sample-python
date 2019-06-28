@@ -1,21 +1,21 @@
 from flask import Flask
-from pprint import pprint
 
 application = Flask(__name__)
 
 @application.route("/")
 def helloJoe():
-    pprint("helloJoe()")
-    pprint(application)
-    return "Hello Joe!"
+  print("helloJoe()")
+  return "Hello Joe !"
 
 @application.route("/bob")
 def helloBob():
-    return "Hello Bob!!!"
+  print("helloBob()")
+  return "Hello Bob !!"
 
 @application.route("/bob2")
 def helloBob2():
-    return "Hello Bob2!!!"
+  print("helloBob2()")
+  return "Hello Bob !2!"
 
 if __name__ == "__main__":
-    application.run()
+  application.run()
