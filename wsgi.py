@@ -5,8 +5,8 @@ application = Flask(__name__)
 
 @application.route("/")
 def helloJoe():
-    pprint.pprint("helloJoe()")
-    pprint.pprint(application)
+    pprint("helloJoe()")
+    pprint(application)
     return "Hello Joe!"
 
 @application.route("/bob")
