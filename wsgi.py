@@ -2,8 +2,9 @@ from flask import Flask
 
 application = Flask(__name__)
 
-@app.route('/favicon.ico')
+@application.route('/favicon.ico')
 def favicon():
+  print("favicon()")
   return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @application.route("/")
