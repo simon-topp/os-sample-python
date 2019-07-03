@@ -1,11 +1,11 @@
-from flask import Flask
+import flask
 
-application = Flask(__name__)
+application = flask.Flask(__name__)
 
 @application.route('/favicon.ico')
 def favicon():
   print("favicon()")
-  return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+  return flask.send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @application.route("/")
 def helloJoe():
