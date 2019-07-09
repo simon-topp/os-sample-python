@@ -38,8 +38,9 @@ def root():
     'AccountSid': 'AC54b20169438a8a59c568cdb1bce96938'
   }
   response = requests.request('POST', endpoint, data=json.dumps(data), headers=headers)
-  pprint.pprint(response)
-
+  print('response:')
+  pprint.pprint(response.headers)
+  print(response.text)
   return '<Response></Response>'
 
 
