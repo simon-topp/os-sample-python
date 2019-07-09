@@ -7,7 +7,7 @@ def favicon():
   print("favicon()")
   return flask.send_from_directory(os.path.join(application.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-@application.route("/")
+@application.route("/", methods = ['POST'])
 def root():
   print("root()")
   print("request:")
@@ -15,6 +15,10 @@ def root():
   print("request.args:")
   pprint.pprint(flask.request.args)
   return "<Response></Response>"
+  print("request.headers:")
+  pprint.pprint(flask.request.headers)
+
+
 
 if __name__ == "__main__":
   application.run()
