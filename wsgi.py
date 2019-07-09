@@ -1,4 +1,4 @@
-import flask, os, pprint, requests, jwt, json
+import flask, os, pprint, requests, jwt, json, base64
 
 application = flask.Flask(__name__)
 
