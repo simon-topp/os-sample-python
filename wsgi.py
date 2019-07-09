@@ -9,7 +9,11 @@ tenantId='af5af6b8f500013eb0c9ec44'
 #Generate JWT
 encodedSecret = base64.b64encode(bytes(secret, encoding='utf8'))
 token = jwt.encode({'clientID': tenantId}, encodedSecret, algorithm='HS256')
-headers = { 'Authorization': 'Bearer '+ bytes.decode(token) }
+session = requests.session()
+session.headers.update({ 
+  'Content-Type': 'application/json', 
+  'Authorization': 'Bearer '+ bytes.decode(token) 
+})
 
 @application.route('/favicon.ico')
 def favicon():
@@ -37,7 +41,7 @@ def root():
     'SmsStatus': 'received',
     'AccountSid': 'AC54b20169438a8a59c568cdb1bce96938'
   }
-  response = requests.request('POST', endpoint, data=json.dumps(data), headers=headers)
+  response = session.request('POST', endpoint, data=json.dumps(data))
   print('response:')
   pprint.pprint(response.headers)
   print(response.text)
