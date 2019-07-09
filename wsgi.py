@@ -12,37 +12,37 @@ token = jwt.encode({'clientID': tenantId}, encodedSecret, algorithm='HS256')
 
 @application.route('/favicon.ico')
 def favicon():
-  print("favicon()")
+  print('favicon()')
   return flask.send_from_directory(os.path.join(application.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-@application.route("/", methods = ['POST'])
+@application.route('/', methods = ['POST'])
 def root():
-  print("root()")
-  print("request:")
+  print('root()')
+  print('request:')
   pprint.pprint(flask.request)
-  print("request.args:")
+  print('request.args:')
   pprint.pprint(flask.request.args)
-  print("request.values:")
+  print('request.values:')
   pprint.pprint(flask.request.values)
-  print("request.headers:")
+  print('request.headers:')
   pprint.pprint(flask.request.headers)
   data = {
-    eventName: "twilio_event",
-    login_id: 1669,
-    SmsSid: "abc",
-    Body: "Hello",
-    From: "+4527212867",
-    FromCountry: "DK",
-    SmsStatus: "received",
-    AccountSid: "AC54b20169438a8a59c568cdb1bce96938"
+    'eventName': 'twilio_event',
+    'login_id': 1669,
+    'SmsSid': 'abc',
+    'Body': 'Hello',
+    'From': '+4527212867',
+    'FromCountry': 'DK',
+    'SmsStatus': 'received',
+    'AccountSid': 'AC54b20169438a8a59c568cdb1bce96938'
   }
   response = requests.request('POST', endpoint, data=json.dumps(data), headers=headers)
   pprint.pprint(response)
 
-  return "<Response></Response>"
+  return '<Response></Response>'
 
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
   application.run()
 
