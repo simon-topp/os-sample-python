@@ -9,6 +9,7 @@ tenantId='af5af6b8f500013eb0c9ec44'
 #Generate JWT
 encodedSecret = base64.b64encode(bytes(secret, encoding='utf8'))
 token = jwt.encode({'clientID': tenantId}, encodedSecret, algorithm='HS256')
+headers = { 'Authorization': 'Bearer '+ bytes.decode(token) }
 
 @application.route('/favicon.ico')
 def favicon():
