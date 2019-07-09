@@ -11,9 +11,9 @@ def favicon():
 def root():
   print("root()")
   print("request:")
-  pprint.pprint(request)
+  pprint.pprint(flask.request)
   print("request.args:")
-  pprint.pprint(request.args)
+  pprint.pprint(flask.request.args)
   return "<Response></Response>"
 
 if __name__ == "__main__":
