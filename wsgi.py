@@ -1,6 +1,14 @@
-import flask, os, pprint
+import flask, os, pprint, requests, jwt, json
 
 application = flask.Flask(__name__)
+
+endpoint = 'https://extapigwservice-demo.cidemo.sas.com/marketingGateway/events'
+secret = 'MTA2NDEwYTg4bTBjODJoZmRoOG5jZjZpazhnZ2g0Mmpt'
+tenantId='af5af6b8f500013eb0c9ec44'
+
+#Generate JWT
+encodedSecret = base64.b64encode(bytes(secret, encoding='utf8'))
+token = jwt.encode({'clientID': tenantId}, encodedSecret, algorithm='HS256')
 
 @application.route('/favicon.ico')
 def favicon():
@@ -18,9 +26,23 @@ def root():
   pprint.pprint(flask.request.values)
   print("request.headers:")
   pprint.pprint(flask.request.headers)
+  data = {
+    eventName: "twilio_event",
+    login_id: 1669,
+    SmsSid: "abc",
+    Body: "Hello",
+    From: "+4527212867",
+    FromCountry: "DK",
+    SmsStatus: "received",
+    AccountSid: "AC54b20169438a8a59c568cdb1bce96938"
+  }
+  response = requests.request('POST', endpoint, data=json.dumps(data), headers=headers)
+  pprint.pprint(response)
+
   return "<Response></Response>"
 
 
 
 if __name__ == "__main__":
   application.run()
+
