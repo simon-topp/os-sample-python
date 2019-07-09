@@ -14,9 +14,11 @@ def root():
   pprint.pprint(flask.request)
   print("request.args:")
   pprint.pprint(flask.request.args)
-  return "<Response></Response>"
+  print("request.values:")
+  pprint.pprint(flask.request.values)
   print("request.headers:")
   pprint.pprint(flask.request.headers)
+  return "<Response></Response>"
 
 
 
