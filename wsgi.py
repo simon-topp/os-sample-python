@@ -33,7 +33,7 @@ def root():
   pprint.pprint(flask.request.headers)
   data = {
     'eventName': 'twilio_event',
-    'login_id': 1669,
+    'customer_id': 1669,
     'SmsSid':  flask.request.values.get('SmsSid'),
     'Body': flask.request.values.get('Body').strip().lower(),
     'From': flask.request.values.get('From'),
