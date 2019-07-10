@@ -34,12 +34,12 @@ def root():
   data = {
     'eventName': 'twilio_event',
     'login_id': 1669,
-    'SmsSid':  request.values.get('SmsSid'),
-    'Body': request.values.get('Body'),
-    'From': request.values.get('From'),
-    'FromCountry': request.values.get('FromCountry'),
-    'SmsStatus': request.values.get('SmsStatus'),
-    'AccountSid': request.values.get('AccountSid')
+    'SmsSid':  flask.request.values.get('SmsSid'),
+    'Body': flask.request.values.get('Body'),
+    'From': flask.request.values.get('From'),
+    'FromCountry': flask.request.values.get('FromCountry'),
+    'SmsStatus': flask.request.values.get('SmsStatus'),
+    'AccountSid': flask.request.values.get('AccountSid')
   }
   response = session.request('POST', endpoint, data=json.dumps(data))
   print('response:')
