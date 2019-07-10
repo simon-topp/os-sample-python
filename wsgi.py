@@ -35,7 +35,7 @@ def root():
     'eventName': 'twilio_event',
     'login_id': 1669,
     'SmsSid':  flask.request.values.get('SmsSid'),
-    'Body': flask.request.values.get('Body'),
+    'Body': flask.request.values.get('Body').strip().lower(),
     'From': flask.request.values.get('From'),
     'FromCountry': flask.request.values.get('FromCountry'),
     'SmsStatus': flask.request.values.get('SmsStatus'),
