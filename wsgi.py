@@ -9,11 +9,10 @@ tenantId='af5af6b8f500013eb0c9ec44'
 #Generate JWT
 encodedSecret = base64.b64encode(bytes(secret, encoding='utf8'))
 token = jwt.encode({'clientID': tenantId}, encodedSecret, algorithm='HS256')
-session = requests.session()
-session.headers.update({ 
+headers = { 
   'Content-Type': 'application/json', 
   'Authorization': 'Bearer '+ bytes.decode(token) 
-})
+}
 
 @application.route('/favicon.ico')
 def favicon():
@@ -41,7 +40,7 @@ def root():
     'SmsStatus': flask.request.values.get('SmsStatus'),
     'AccountSid': flask.request.values.get('AccountSid')
   }
-  response = session.request('POST', endpoint, data=json.dumps(data))
+  response = requests.request('POST', endpoint, data=json.dumps(data), headers=headers)
   print('response:')
   pprint.pprint(response.headers)
   print(response.text)
