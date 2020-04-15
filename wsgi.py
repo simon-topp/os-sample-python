@@ -32,7 +32,7 @@ def root():
   pprint.pprint(flask.request.headers)
   sender = flask.request.values.get('From')
   # remove training "+" from sender address
-  login_id = from[1:] if sender.startswith("+") else sender
+  login_id = sender[1:] if sender.startswith("+") else sender
   data = {
     'eventName': 'twilio_event',
     'login_id': login_id,
