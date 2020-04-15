@@ -30,14 +30,15 @@ def root():
   pprint.pprint(flask.request.values)
   print('request.headers:')
   pprint.pprint(flask.request.headers)
-  from = flask.request.values.get('From')
-  login_id = from[1:] if from.startswith("+") else from
+  sender = flask.request.values.get('From')
+  # remove training "+" from sender address
+  login_id = from[1:] if sender.startswith("+") else sender
   data = {
     'eventName': 'twilio_event',
     'login_id': login_id,
     'SmsSid':  flask.request.values.get('SmsSid'),
     'Body': flask.request.values.get('Body').strip().lower(),
-    'From': flask.request.values.get('From'),
+    'From': sender,
     'FromCountry': flask.request.values.get('FromCountry'),
     'SmsStatus': flask.request.values.get('SmsStatus'),
     'AccountSid': flask.request.values.get('AccountSid')
