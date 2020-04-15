@@ -32,10 +32,10 @@ def root():
   pprint.pprint(flask.request.headers)
   sender = flask.request.values.get('From')
   # remove training "+" from sender address
-  subject_id = sender[1:] if sender.startswith("+") else sender
+  customer_id = sender[1:] if sender.startswith("+") else sender
   data = {
     'eventName': 'twilio_event',
-    'subject_id': subject_id,
+    'customer_id': customer_id,
     'SmsSid':  flask.request.values.get('SmsSid'),
     'Body': flask.request.values.get('Body').strip().lower(),
     'From': sender,
