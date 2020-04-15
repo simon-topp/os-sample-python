@@ -43,14 +43,12 @@ def root():
     'SmsStatus': flask.request.values.get('SmsStatus'),
     'AccountSid': flask.request.values.get('AccountSid')
   }
+  pprint.pprint(data)
   response = requests.request('POST', endpoint, data=json.dumps(data), headers=headers)
   print('response:')
   pprint.pprint(response.headers)
   print(response.text)
   return '<Response></Response>'
-
-
-
 if __name__ == '__main__':
   application.run()
 
