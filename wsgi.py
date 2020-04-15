@@ -30,9 +30,11 @@ def root():
   pprint.pprint(flask.request.values)
   print('request.headers:')
   pprint.pprint(flask.request.headers)
+  from = flask.request.values.get('From')
+  login_id = from[1:] if from.startswith("+") else from
   data = {
     'eventName': 'twilio_event',
-    'subject_id': '1669',
+    'login_id': login_id,
     'SmsSid':  flask.request.values.get('SmsSid'),
     'Body': flask.request.values.get('Body').strip().lower(),
     'From': flask.request.values.get('From'),
